@@ -7,7 +7,7 @@ ofxChromaKey::ofxChromaKey(){
     string fragment;
     
     if(ofIsGLProgrammableRenderer()){
-        vertex = R"END(
+        vertex = R"GLSL(
         #version 150
         uniform mat4 modelViewProjectionMatrix;
         in vec4 position;
@@ -18,9 +18,9 @@ ofxChromaKey::ofxChromaKey(){
             texCoordVarying = texcoord;
             gl_Position = modelViewProjectionMatrix * position;
         }
-        )END";
+        )GLSL";
         
-        fragment = R"END(
+        fragment = R"GLSL(
         #version 150
         uniform sampler2DRect tex0;
         uniform float threshold;
@@ -37,9 +37,9 @@ ofxChromaKey::ofxChromaKey(){
                 outputColor = texel0;
             }
         }
-        )END";
+        )GLSL";
     }else{
-        vertex = R"END(
+        vertex = R"GLSL(
         #version 120
         varying vec2 texCoordVarying;
         void main()
@@ -47,9 +47,9 @@ ofxChromaKey::ofxChromaKey(){
             texCoordVarying = gl_MultiTexCoord0.xy;
             gl_Position = ftransform();
         }
-        )END";
+        )GLSL";
         
-        fragment = R"END(
+        fragment = R"GLSL(
         #version 120
         uniform sampler2DRect tex0;
         uniform float threshold;
@@ -65,7 +65,7 @@ ofxChromaKey::ofxChromaKey(){
                 gl_FragColor = texel0;
             }
         }
-        )END";
+        )GLSL";
     }
     
     shader.setupShaderFromSource(GL_VERTEX_SHADER, vertex);
