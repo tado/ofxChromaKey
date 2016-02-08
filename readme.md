@@ -12,7 +12,7 @@ A very simple chroma keying addon using GLSL. You can set two parameters.
 ```{c++}
 ofxChromaKey chromaKey;
 
-chromaKey.keyColor = ofColor(0.0, 1.0, 0.0);
+chromaKey.keyColor = ofColor(0, 255, 0);
 chromaKey.threshold = 0.8;
 
 chromaKey.begin();

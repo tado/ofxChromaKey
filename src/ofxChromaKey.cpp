@@ -1,7 +1,7 @@
 #include "ofxChromaKey.h"
 
 ofxChromaKey::ofxChromaKey(){
-    keyColor = ofColor(0.0, 1.0, 0.0);
+    keyColor = ofColor(0, 255, 0);
     threshold = 0.1;
     string vertex;
     string fragment;
@@ -76,7 +76,7 @@ ofxChromaKey::ofxChromaKey(){
 
 void ofxChromaKey::begin(){
     shader.begin();
-    shader.setUniform3f("chromaKeyColor", ofVec3f(keyColor.r, keyColor.g, keyColor.b));
+    shader.setUniform3f("chromaKeyColor", ofVec3f(keyColor.r/255.0, keyColor.g/255.0, keyColor.b/255.0));
     shader.setUniform1f("threshold", threshold);
 }
 

@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     image.load("source.jpg");
-    chromaKey.keyColor = ofColor(0.0, 1.0, 0.0);
+    chromaKey.keyColor = ofColor(0, 255, 0); // set key color to green
 }
 
 //--------------------------------------------------------------
